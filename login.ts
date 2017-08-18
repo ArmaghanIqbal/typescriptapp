@@ -25,6 +25,7 @@ function LoginPageFunction() {
     ParentDiv.setAttribute('align', 'center');
 
 
+  
     /*ParentDiv.appendChild(newDiv);
     ParentDiv.appendChild(newDiv1);
     ParentDiv.appendChild(newDiv2);
