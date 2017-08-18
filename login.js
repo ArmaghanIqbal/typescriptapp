@@ -1,6 +1,16 @@
 window.onload = function LoginPageHTML() {
     LoginPageFunction();
 };
+var htmlElement = (function () {
+    function htmlElement() {
+    }
+    htmlElement.prototype.createLabels = function (spanName) {
+        var newSpan = document.createElement('span');
+        newSpan.innerHTML = spanName;
+        return newSpan;
+    };
+    return htmlElement;
+}());
 function LoginPageFunction() {
     document.title = 'Login';
     var NewScript = document.createElement('script');
@@ -20,8 +30,7 @@ function LoginPageFunction() {
     newDiv.setAttribute('id', 'innerDiv1');
     newDiv.setAttribute('align', 'center');
     //create span to contain the text
-    var newSpan = document.createElement('span');
-    newSpan.innerHTML = "UserName :";
+    var htmlObject = new htmlElement();
     // create new textbox for email entry
     var newTextBox = document.createElement('input');
     newTextBox.type = 'text';
@@ -30,8 +39,6 @@ function LoginPageFunction() {
     newDiv1.setAttribute('id', 'innerDiv2');
     newDiv1.setAttribute('align', 'center');
     //create span to contain the text
-    var newSpan1 = document.createElement('span');
-    newSpan1.innerHTML = "Password :";
     // create new textbox for email entry
     var newTextBox1 = document.createElement('input');
     newTextBox1.type = 'text';
@@ -48,14 +55,6 @@ function LoginPageFunction() {
     newButton1.id = 'btnRegister';
     newButton1.value = 'Register';
     newButton1.type = 'button';
-    /*
-     // create remove button for each email adress
-     var newButton = document.createElement('input');
-     newButton.type = 'button';
-     newButton.value = 'Remove';
-     newButton.id = 'btn'+NumOfRow;
-     
-     }*/
     // atach event for remove button click
     newButton.onclick = function LoginAuth() {
         alert('i am login');
@@ -65,9 +64,9 @@ function LoginPageFunction() {
         reg.hello();
     };
     // append the span, textbox and the button
-    newDiv.appendChild(newSpan);
+    newDiv.appendChild(htmlObject.createLabels("UserName :"));
     newDiv.appendChild(newTextBox);
-    newDiv1.appendChild(newSpan1);
+    newDiv1.appendChild(htmlObject.createLabels("Password :"));
     newDiv1.appendChild(newTextBox1);
     newDiv2.appendChild(newButton);
     newDiv2.appendChild(newButton1);
