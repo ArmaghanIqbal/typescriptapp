@@ -9,7 +9,7 @@ class creatediv {
 
 }
 
-class htmlElement  extends creatediv{
+class htmlElementCreation  extends creatediv{
     createLabels(divid, labeltext) {
         var div = this.divhtml(divid);
 
