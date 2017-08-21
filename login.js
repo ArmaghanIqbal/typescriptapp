@@ -1,11 +1,18 @@
-var register = (function () {
-    function register() {
+window.onload = function LoginPageHTML() {
+    var lo = new Login();
+    lo.LoginPageFunction();
+};
+var Login = (function () {
+    function Login() {
     }
-    register.prototype.registerationhtmlpage = function () {
-        document.title = 'Registration';
-        document.getElementById('ParentDiv').remove();
+    Login.prototype.LoginPageFunction = function () {
+        document.title = 'Login';
         // get the refference of the main Div
         var mainDiv = document.getElementById('MainDiv');
+        var element = document.getElementById('ParentDiv');
+        if (element != null) {
+            element.remove();
+        }
         var ParentDiv = document.createElement('div');
         ParentDiv.setAttribute('id', 'ParentDiv');
         ParentDiv.setAttribute('align', 'center');
@@ -24,5 +31,5 @@ var register = (function () {
         ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#'));
         mainDiv.appendChild(ParentDiv);
     };
-    return register;
+    return Login;
 }());

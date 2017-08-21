@@ -19,19 +19,19 @@ var creatediv = (function () {
     };
     return creatediv;
 }());
-var htmlElement = (function (_super) {
-    __extends(htmlElement, _super);
-    function htmlElement() {
+var htmlElementCreation = (function (_super) {
+    __extends(htmlElementCreation, _super);
+    function htmlElementCreation() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    htmlElement.prototype.createLabels = function (divid, labeltext) {
+    htmlElementCreation.prototype.createLabels = function (divid, labeltext) {
         var div = this.divhtml(divid);
         var newSpan = document.createElement('span');
         newSpan.innerHTML = labeltext;
         div.appendChild(newSpan);
         return div;
     };
-    htmlElement.prototype.createtextboxes = function (divid, textid) {
+    htmlElementCreation.prototype.createtextboxes = function (divid, textid) {
         var div = this.divhtml(divid);
         var textbox = document.createElement('input');
         textbox.type = 'text';
@@ -39,7 +39,7 @@ var htmlElement = (function (_super) {
         div.appendChild(textbox);
         return div;
     };
-    htmlElement.prototype.createbutton = function (divid, buttonid, buttontext) {
+    htmlElementCreation.prototype.createbutton = function (divid, buttonid, buttontext) {
         var div = this.divhtml(divid);
         var button = document.createElement('input');
         button.id = buttonid;
@@ -48,7 +48,7 @@ var htmlElement = (function (_super) {
         div.appendChild(button);
         return div;
     };
-    htmlElement.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref) {
+    htmlElementCreation.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref) {
         var div = this.divhtml(divid);
         var hyperlink = document.createElement('a');
         var linkText = document.createTextNode(hypertext);
@@ -58,5 +58,5 @@ var htmlElement = (function (_super) {
         div.appendChild(hyperlink);
         return div;
     };
-    return htmlElement;
+    return htmlElementCreation;
 }(creatediv));
