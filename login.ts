@@ -24,11 +24,4 @@ function LoginPageFunction() {
     ParentDiv.setAttribute('id', 'ParentDiv');
     ParentDiv.setAttribute('align', 'center');
 
-
-  
-    /*ParentDiv.appendChild(newDiv);
-    ParentDiv.appendChild(newDiv1);
-    ParentDiv.appendChild(newDiv2);
-
-    mainDiv.appendChild(ParentDiv);*/
 }
