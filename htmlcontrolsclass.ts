@@ -9,7 +9,7 @@ class creatediv {
 
 }
 
-class htmlElementCreation  extends creatediv{
+export class htmlElementCreation  extends creatediv{
     createLabels(divid, labeltext) {
         var div = this.divhtml(divid);
 
@@ -19,12 +19,14 @@ class htmlElementCreation  extends creatediv{
         return div;
     }
 
-    createtextboxes(divid, textid) {
+    createtextboxes(divid, textid, typetext) {
         var div = this.divhtml(divid);
 
         var textbox = document.createElement('input');
         textbox.type = 'text';
         textbox.setAttribute('id', textid);
+        textbox.setAttribute('type', typetext);
+        
 
         div.appendChild(textbox);
         return div;

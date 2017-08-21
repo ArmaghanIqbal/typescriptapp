@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -8,6 +9,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+exports.__esModule = true;
 var creatediv = (function () {
     function creatediv() {
     }
@@ -31,11 +33,12 @@ var htmlElementCreation = (function (_super) {
         div.appendChild(newSpan);
         return div;
     };
-    htmlElementCreation.prototype.createtextboxes = function (divid, textid) {
+    htmlElementCreation.prototype.createtextboxes = function (divid, textid, typetext) {
         var div = this.divhtml(divid);
         var textbox = document.createElement('input');
         textbox.type = 'text';
         textbox.setAttribute('id', textid);
+        textbox.setAttribute('type', typetext);
         div.appendChild(textbox);
         return div;
     };
@@ -60,3 +63,4 @@ var htmlElementCreation = (function (_super) {
     };
     return htmlElementCreation;
 }(creatediv));
+exports.htmlElementCreation = htmlElementCreation;
