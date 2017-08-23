@@ -1,11 +1,14 @@
 import * as impoertcalllog from './htmlcontrolsclass';
+import * as reg from './registration';
+import * as forgotPwd from './forgot';
+
 
 window.onload = function LoginPageHTML() {
  
         let lo=new Login();
         lo.LoginPageFunction();
     }
-    class Login {
+   export class Login {
        
  LoginPageFunction() {
         document.title = 'Login';
@@ -26,30 +29,32 @@ window.onload = function LoginPageHTML() {
 
         let  html1 = new impoertcalllog.htmlElementCreation();
 
-       
+        ParentDiv.appendChild(html1.createImage('divImg', '/home/mesam/Documents/typescriptapp/typescriptapp/images/smily.jpg',50,50));
         ParentDiv.appendChild(html1.createLabels('div1', 'UserName'));
-        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername','Text'));
+        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername','Text',"onlyAlphabets"));
 
         ParentDiv.appendChild(html1.createLabels('div3', 'Password'));
-        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword','Password'));
-
-        // ParentDiv.appendChild(html1.createLabels('div5', 'Country'));
-        // ParentDiv.appendChild(html1.createtextboxes('div6', 'txtcountry'));
-
-        // ParentDiv.appendChild(html1.createLabels('div7', 'Password'));
-        // ParentDiv.appendChild(html1.createtextboxes('div8', 'txtpassword'));
-
-        // ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
-        // ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword'));
-
+        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword','Password',"onlyAlphabetsAndNumbers"));
          ParentDiv.appendChild(html1.createbutton('div5', 'btnsignIn', 'Sign In'));
-         ParentDiv.appendChild(html1.createhyperlink('div6', 'hypersignUp', 'or Sign Up', '#'));
+         //let rf=new regForm.register();
+         //rf.registerationhtmlpage();
+         ParentDiv.appendChild(html1.createhyperlink('div6', 'hypersignUp', 'or Sign Up', '#',goToRegistration));
+
+         ParentDiv.appendChild(html1.createhyperlink('div7', 'hypersignUp', 'Forgot Password?', '#',goToForgotPassword));
 
 
         mainDiv.appendChild(ParentDiv);
     }
 }
 
+function goToRegistration()
+{
+  var ll=new reg.register;
+  ll.registerationhtmlpage();
+}
 
-
-
+function goToForgotPassword()
+{
+  var pwd=new forgotPwd.forgot;
+  pwd.forgothtmlpage();
+}

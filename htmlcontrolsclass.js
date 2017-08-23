@@ -1,4 +1,16 @@
 "use strict";
+//  var onlyAlphabets=function (event){
+//      var e = event.charCode;
+//      if(!(e >= 65 && e <= 120) && (e != 32 && e != 0)) { 
+//         event.preventDefault(); 
+//      }
+//  }
+// var onlyAlphabetsAndNumbers=function (event){
+//     var e = event.charCode;
+//     if(!(e >= 65 && e <= 120) &&  !(e>=48 &&e<=57)) { 
+//        event.preventDefault(); 
+//     }
+// }
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -26,6 +38,15 @@ var htmlElementCreation = (function (_super) {
     function htmlElementCreation() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    htmlElementCreation.prototype.createImage = function (divid, imageUrl, imgWidth, imgHeight) {
+        var div = this.divhtml(divid);
+        var newImage = document.createElement('img');
+        newImage.src = imageUrl;
+        newImage.width = imgWidth;
+        newImage.height = imgHeight;
+        div.appendChild(newImage);
+        return div;
+    };
     htmlElementCreation.prototype.createLabels = function (divid, labeltext) {
         var div = this.divhtml(divid);
         var newSpan = document.createElement('span');
@@ -33,12 +54,32 @@ var htmlElementCreation = (function (_super) {
         div.appendChild(newSpan);
         return div;
     };
-    htmlElementCreation.prototype.createtextboxes = function (divid, textid, typetext) {
+    htmlElementCreation.prototype.createtextboxes = function (divid, textid, typetext, myValidtion) {
         var div = this.divhtml(divid);
         var textbox = document.createElement('input');
         textbox.type = 'text';
         textbox.setAttribute('id', textid);
         textbox.setAttribute('type', typetext);
+        // textbox.setAttribute('onkeypress',myValidtion);
+        //alert(htmlElementCreation.prototype.myVa);
+        //alert(window["onlyAlphabets"]);
+        textbox.onkeypress = function (event) {
+            var e = event.charCode;
+            //alert(myValidtion);
+            if (myValidtion == "onlyAlphabets") {
+                if (!(e >= 65 && e <= 120) && (e != 32 && e != 0)) {
+                    event.preventDefault();
+                }
+            }
+            if (myValidtion == "onlyAlphabetsAndNumbers") {
+                if (!(e >= 65 && e <= 120) && !(e >= 48 && e <= 57)) {
+                    event.preventDefault();
+                }
+            }
+            if (myValidtion == "allowAll") {
+            }
+        };
+        //alert(myValidtion);
         div.appendChild(textbox);
         return div;
     };
@@ -51,13 +92,14 @@ var htmlElementCreation = (function (_super) {
         div.appendChild(button);
         return div;
     };
-    htmlElementCreation.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref) {
+    htmlElementCreation.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref, myfunc) {
         var div = this.divhtml(divid);
         var hyperlink = document.createElement('a');
         var linkText = document.createTextNode(hypertext);
         hyperlink.appendChild(linkText);
         hyperlink.title = hypertext;
         hyperlink.href = hyperhref;
+        hyperlink.addEventListener("click", myfunc, false);
         div.appendChild(hyperlink);
         return div;
     };

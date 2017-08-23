@@ -71,6 +71,8 @@
 
 exports.__esModule = true;
 var impoertcalllog = __webpack_require__(1);
+var reg = __webpack_require__(2);
+var forgotPwd = __webpack_require__(3);
 window.onload = function LoginPageHTML() {
     var lo = new Login();
     lo.LoginPageFunction();
@@ -90,22 +92,29 @@ var Login = (function () {
         ParentDiv.setAttribute('id', 'ParentDiv');
         ParentDiv.setAttribute('align', 'center');
         var html1 = new impoertcalllog.htmlElementCreation();
+        ParentDiv.appendChild(html1.createImage('divImg', '/home/mesam/Documents/typescriptapp/typescriptapp/images/smily.jpg', 50, 50));
         ParentDiv.appendChild(html1.createLabels('div1', 'UserName'));
-        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername', 'Text'));
+        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername', 'Text', "onlyAlphabets"));
         ParentDiv.appendChild(html1.createLabels('div3', 'Password'));
-        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword', 'Password'));
-        // ParentDiv.appendChild(html1.createLabels('div5', 'Country'));
-        // ParentDiv.appendChild(html1.createtextboxes('div6', 'txtcountry'));
-        // ParentDiv.appendChild(html1.createLabels('div7', 'Password'));
-        // ParentDiv.appendChild(html1.createtextboxes('div8', 'txtpassword'));
-        // ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
-        // ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword'));
+        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword', 'Password', "onlyAlphabetsAndNumbers"));
         ParentDiv.appendChild(html1.createbutton('div5', 'btnsignIn', 'Sign In'));
-        ParentDiv.appendChild(html1.createhyperlink('div6', 'hypersignUp', 'or Sign Up', '#'));
+        //let rf=new regForm.register();
+        //rf.registerationhtmlpage();
+        ParentDiv.appendChild(html1.createhyperlink('div6', 'hypersignUp', 'or Sign Up', '#', goToRegistration));
+        ParentDiv.appendChild(html1.createhyperlink('div7', 'hypersignUp', 'Forgot Password?', '#', goToForgotPassword));
         mainDiv.appendChild(ParentDiv);
     };
     return Login;
 }());
+exports.Login = Login;
+function goToRegistration() {
+    var ll = new reg.register;
+    ll.registerationhtmlpage();
+}
+function goToForgotPassword() {
+    var pwd = new forgotPwd.forgot;
+    pwd.forgothtmlpage();
+}
 
 
 /***/ }),
@@ -114,6 +123,18 @@ var Login = (function () {
 
 "use strict";
 
+//  var onlyAlphabets=function (event){
+//      var e = event.charCode;
+//      if(!(e >= 65 && e <= 120) && (e != 32 && e != 0)) { 
+//         event.preventDefault(); 
+//      }
+//  }
+// var onlyAlphabetsAndNumbers=function (event){
+//     var e = event.charCode;
+//     if(!(e >= 65 && e <= 120) &&  !(e>=48 &&e<=57)) { 
+//        event.preventDefault(); 
+//     }
+// }
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -141,6 +162,15 @@ var htmlElementCreation = (function (_super) {
     function htmlElementCreation() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    htmlElementCreation.prototype.createImage = function (divid, imageUrl, imgWidth, imgHeight) {
+        var div = this.divhtml(divid);
+        var newImage = document.createElement('img');
+        newImage.src = imageUrl;
+        newImage.width = imgWidth;
+        newImage.height = imgHeight;
+        div.appendChild(newImage);
+        return div;
+    };
     htmlElementCreation.prototype.createLabels = function (divid, labeltext) {
         var div = this.divhtml(divid);
         var newSpan = document.createElement('span');
@@ -148,12 +178,32 @@ var htmlElementCreation = (function (_super) {
         div.appendChild(newSpan);
         return div;
     };
-    htmlElementCreation.prototype.createtextboxes = function (divid, textid, typetext) {
+    htmlElementCreation.prototype.createtextboxes = function (divid, textid, typetext, myValidtion) {
         var div = this.divhtml(divid);
         var textbox = document.createElement('input');
         textbox.type = 'text';
         textbox.setAttribute('id', textid);
         textbox.setAttribute('type', typetext);
+        // textbox.setAttribute('onkeypress',myValidtion);
+        //alert(htmlElementCreation.prototype.myVa);
+        //alert(window["onlyAlphabets"]);
+        textbox.onkeypress = function (event) {
+            var e = event.charCode;
+            //alert(myValidtion);
+            if (myValidtion == "onlyAlphabets") {
+                if (!(e >= 65 && e <= 120) && (e != 32 && e != 0)) {
+                    event.preventDefault();
+                }
+            }
+            if (myValidtion == "onlyAlphabetsAndNumbers") {
+                if (!(e >= 65 && e <= 120) && !(e >= 48 && e <= 57)) {
+                    event.preventDefault();
+                }
+            }
+            if (myValidtion == "allowAll") {
+            }
+        };
+        //alert(myValidtion);
         div.appendChild(textbox);
         return div;
     };
@@ -166,19 +216,115 @@ var htmlElementCreation = (function (_super) {
         div.appendChild(button);
         return div;
     };
-    htmlElementCreation.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref) {
+    htmlElementCreation.prototype.createhyperlink = function (divid, hyperid, hypertext, hyperhref, myfunc) {
         var div = this.divhtml(divid);
         var hyperlink = document.createElement('a');
         var linkText = document.createTextNode(hypertext);
         hyperlink.appendChild(linkText);
         hyperlink.title = hypertext;
         hyperlink.href = hyperhref;
+        hyperlink.addEventListener("click", myfunc, false);
         div.appendChild(hyperlink);
         return div;
     };
     return htmlElementCreation;
 }(creatediv));
 exports.htmlElementCreation = htmlElementCreation;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var impoertcallreg = __webpack_require__(1);
+var login = __webpack_require__(0);
+window.onload = function RegistrationPageHTML() {
+    var ra = new register();
+    ra.registerationhtmlpage();
+};
+var register = (function () {
+    function register() {
+    }
+    register.prototype.registerationhtmlpage = function () {
+        document.title = 'Registration';
+        document.getElementById('ParentDiv').remove();
+        // get the refference of the main Div
+        var mainDiv = document.getElementById('MainDiv');
+        var ParentDiv = document.createElement('div');
+        ParentDiv.setAttribute('id', 'ParentDiv');
+        ParentDiv.setAttribute('align', 'center');
+        var html1 = new impoertcallreg.htmlElementCreation();
+        ParentDiv.appendChild(html1.createLabels('div1', 'Full Name'));
+        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtfullname', 'Text', "onlyAlphabets"));
+        ParentDiv.appendChild(html1.createLabels('div3', 'Email'));
+        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtemail', 'Text', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createLabels('div5', 'Country'));
+        ParentDiv.appendChild(html1.createtextboxes('div6', 'txtcountry', 'Text', "allowAll"));
+        ParentDiv.appendChild(html1.createLabels('div7', 'Password'));
+        ParentDiv.appendChild(html1.createtextboxes('div8', 'txtpassword', 'Password', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
+        ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createbutton('div11', 'btnregister', 'Register'));
+        ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#', gotoLogin));
+        //  ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin','or Sign In','#'));
+        mainDiv.appendChild(ParentDiv);
+    };
+    return register;
+}());
+exports.register = register;
+function gotoLogin() {
+    var lo = new login.Login;
+    lo.LoginPageFunction();
+}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
+var impoertcallreg = __webpack_require__(1);
+var login = __webpack_require__(0);
+var reg = __webpack_require__(2);
+var forgot = (function () {
+    function forgot() {
+    }
+    forgot.prototype.forgothtmlpage = function () {
+        document.title = 'Forgot Password';
+        document.getElementById('ParentDiv').remove();
+        // get the refference of the main Div
+        var mainDiv = document.getElementById('MainDiv');
+        var ParentDiv = document.createElement('div');
+        ParentDiv.setAttribute('id', 'ParentDiv');
+        ParentDiv.setAttribute('align', 'center');
+        var html1 = new impoertcallreg.htmlElementCreation();
+        ParentDiv.appendChild(html1.createLabels('div1', 'Email'));
+        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtemail', 'Text', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createLabels('div3', 'New Password'));
+        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtnewpassword', 'Password', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createLabels('div5', 'Confirm Password'));
+        ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers"));
+        ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword', 'Rest Password'));
+        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '#', gotoLogin));
+        ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup', 'or Sign Up', '#', goToRegistration));
+        mainDiv.appendChild(ParentDiv);
+    };
+    return forgot;
+}());
+exports.forgot = forgot;
+function gotoLogin() {
+    var lo = new login.Login;
+    lo.LoginPageFunction();
+}
+function goToRegistration() {
+    var ll = new reg.register;
+    ll.registerationhtmlpage();
+}
 
 
 /***/ })
