@@ -1,7 +1,7 @@
 import * as impoertcalllog from './htmlcontrolsclass';
 import * as reg from './registration';
 import * as forgotPwd from './forgot';
-
+import * as mainpage from './mainpage';
 
 window.onload = function LoginPageHTML() {
  
@@ -31,11 +31,11 @@ window.onload = function LoginPageHTML() {
 
         ParentDiv.appendChild(html1.createImage('divImg', '/home/mesam/Documents/typescriptapp/typescriptapp/images/smily.jpg',50,50));
         ParentDiv.appendChild(html1.createLabels('div1', 'UserName'));
-        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername','Text',"onlyAlphabets"));
+        ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername','Text',"onlyAlphabets",true));
 
         ParentDiv.appendChild(html1.createLabels('div3', 'Password'));
-        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword','Password',"onlyAlphabetsAndNumbers"));
-         ParentDiv.appendChild(html1.createbutton('div5', 'btnsignIn', 'Sign In'));
+        ParentDiv.appendChild(html1.createtextboxes('div4', 'txtPassword','Password',"onlyAlphabetsAndNumbers",true));
+         ParentDiv.appendChild(html1.createbutton('div5', 'btnsignIn', 'Sign In',goToMainPage));
          //let rf=new regForm.register();
          //rf.registerationhtmlpage();
          ParentDiv.appendChild(html1.createhyperlink('div6', 'hypersignUp', 'or Sign Up', '#',goToRegistration));
@@ -57,4 +57,10 @@ function goToForgotPassword()
 {
   var pwd=new forgotPwd.forgot;
   pwd.forgothtmlpage();
+}
+function goToMainPage()
+{
+    
+var mp=new mainpage.mainPage;
+mp.mainPageFunction();
 }

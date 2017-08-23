@@ -34,6 +34,37 @@ export class htmlElementCreation  extends creatediv{
     div.appendChild(newImage);
     return div;
   }
+
+  createMenu(divid,listText,menuFunctions)
+  {
+    var div = this.divhtml(divid);
+    var ul=document.createElement('ul');
+    var str = listText;
+
+    var str_array = str.split(',');
+    var hyperFunction=menuFunctions.split(',');
+    
+    for(var i = 0; i < str_array.length; i++) {
+       var li =document.createElement('li');
+       str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
+       alert(str_array[i]);
+       hyperFunction[i]=hyperFunction[i].replace(/^\s*/, "").replace(/\s*$/, "");
+       alert(hyperFunction[i]);
+       var hyperlink = document.createElement('a');
+       var linkText = document.createTextNode(str_array[i] );
+       hyperlink.appendChild(linkText);
+       hyperlink.title = str_array[i] ;
+       hyperlink.href = '#';
+       
+       //hyperlink.addEventListener("click",  hyperFunction[i], false);
+       li.appendChild(hyperlink);
+       ul.appendChild(li);
+       
+    }
+    div.appendChild(ul);
+    return div;
+
+  }
     
     createLabels(divid, labeltext) {
         var div = this.divhtml(divid);
@@ -44,21 +75,17 @@ export class htmlElementCreation  extends creatediv{
         return div;
     }
 
-    createtextboxes(divid, textid, typetext,myValidtion) {
+    createtextboxes(divid, textid, typetext,myValidtion,required) {
         var div = this.divhtml(divid);
 
         var textbox = document.createElement('input');
         textbox.type = 'text';
         textbox.setAttribute('id', textid);
         textbox.setAttribute('type', typetext);
-       // textbox.setAttribute('onkeypress',myValidtion);
-        
-        //alert(htmlElementCreation.prototype.myVa);
-     //alert(window["onlyAlphabets"]);
-     
+        textbox.required=required;
         textbox.onkeypress=   function (event){
             var e = event.charCode;
-            //alert(myValidtion);
+     
             if(myValidtion=="onlyAlphabets")
                 {
                    
@@ -76,22 +103,19 @@ export class htmlElementCreation  extends creatediv{
                 }
             
         };
-        //alert(myValidtion);
-
-      
-
         div.appendChild(textbox);
         return div;
 
     }
 
-    createbutton(divid, buttonid, buttontext) {
+    createbutton(divid, buttonid, buttontext,myClickEvent) {
         var div = this.divhtml(divid);
 
         var button = document.createElement('input');
         button.id = buttonid;
         button.value = buttontext;
         button.type = 'Submit';
+        button.onclick=myClickEvent;
 
         div.appendChild(button);
         return div;
