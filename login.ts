@@ -29,7 +29,7 @@ window.onload = function LoginPageHTML() {
 
         let  html1 = new impoertcalllog.htmlElementCreation();
 
-        ParentDiv.appendChild(html1.createImage('divImg', '/home/mesam/Documents/typescriptapp/typescriptapp/images/smily.jpg',50,50));
+        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/smily.jpg',50,50));
         ParentDiv.appendChild(html1.createLabels('div1', 'UserName'));
         ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername','Text',"onlyAlphabets",true));
 
