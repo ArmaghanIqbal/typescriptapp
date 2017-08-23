@@ -20,10 +20,17 @@ var forgot = (function () {
         ParentDiv.appendChild(html1.createLabels('div3', 'New Password'));
         ParentDiv.appendChild(html1.createtextboxes('div4', 'txtnewpassword', 'Password', "onlyAlphabetsAndNumbers"));
         ParentDiv.appendChild(html1.createLabels('div5', 'Confirm Password'));
+<<<<<<< HEAD
         ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers"));
         ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword', 'Rest Password'));
         ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '#', gotoLogin));
         ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup', 'or Sign Up', '#', goToRegistration));
+=======
+        ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword', 'Password'));
+        ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword', 'Reset Password'));
+        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '#'));
+        ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup', 'or Sign Up', '#'));
+>>>>>>> b9b3468bd6021020aaf34696421fba7380c9e466
         mainDiv.appendChild(ParentDiv);
     };
     return forgot;
