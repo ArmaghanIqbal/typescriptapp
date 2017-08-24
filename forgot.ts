@@ -30,7 +30,7 @@ export class forgot {
         
         ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword','Reset Password',resetPassword));
 
-        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin','or Sign In','#',gotoLogin));
+        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin','or Sign In','',gotoLogin));
         ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup','or Sign Up','#',goToRegistration));
 
 

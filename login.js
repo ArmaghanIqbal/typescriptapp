@@ -45,12 +45,16 @@ exports.Login = Login;
 function goToRegistration() {
     var ll = new reg.register;
     ll.registerationhtmlpage();
+    return false;
 }
 function goToForgotPassword() {
     var pwd = new forgotPwd.forgot;
     pwd.forgothtmlpage();
+    return false;
 }
 function goToMainPage() {
-    var mp = new mainpage.mainPage;
+    //alert('test');
+    var mp = new mainpage.myMainPage;
     mp.mainPageFunction();
+    return false;
 }

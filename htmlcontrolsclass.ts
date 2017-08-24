@@ -115,7 +115,10 @@ export class htmlElementCreation  extends creatediv{
         button.id = buttonid;
         button.value = buttontext;
         button.type = 'Submit';
-        button.onclick=myClickEvent;
+        //button.onsubmit=myClickEvent;
+        //button.onclick=myClickEvent;
+        var your_form = document.getElementById('myForm');
+        your_form.onsubmit=myClickEvent;
 
         div.appendChild(button);
         return div;

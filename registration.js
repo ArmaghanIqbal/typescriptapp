@@ -29,7 +29,7 @@ var register = (function () {
         ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createbutton('div11', 'btnregister', 'Register', RegisterSave));
-        ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#', gotoLogin));
+        ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '', gotoLogin));
         mainDiv.appendChild(ParentDiv);
     };
     return register;

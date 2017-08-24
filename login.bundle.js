@@ -176,7 +176,10 @@ var htmlElementCreation = (function (_super) {
         button.id = buttonid;
         button.value = buttontext;
         button.type = 'Submit';
-        button.onclick = myClickEvent;
+        //button.onsubmit=myClickEvent;
+        //button.onclick=myClickEvent;
+        var your_form = document.getElementById('myForm');
+        your_form.onsubmit = myClickEvent;
         div.appendChild(button);
         return div;
     };
@@ -248,14 +251,18 @@ exports.Login = Login;
 function goToRegistration() {
     var ll = new reg.register;
     ll.registerationhtmlpage();
+    return false;
 }
 function goToForgotPassword() {
     var pwd = new forgotPwd.forgot;
     pwd.forgothtmlpage();
+    return false;
 }
 function goToMainPage() {
-    var mp = new mainpage.mainPage;
+    //alert('test');
+    var mp = new mainpage.myMainPage;
     mp.mainPageFunction();
+    return false;
 }
 
 
@@ -295,7 +302,7 @@ var register = (function () {
         ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createbutton('div11', 'btnregister', 'Register', RegisterSave));
-        ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#', gotoLogin));
+        ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '', gotoLogin));
         mainDiv.appendChild(ParentDiv);
     };
     return register;
@@ -340,7 +347,7 @@ var forgot = (function () {
         ParentDiv.appendChild(html1.createLabels('div5', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword', 'Reset Password', resetPassword));
-        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '#', gotoLogin));
+        ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '', gotoLogin));
         ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup', 'or Sign Up', '#', goToRegistration));
         mainDiv.appendChild(ParentDiv);
     };
@@ -368,14 +375,14 @@ function resetPassword() {
 
 exports.__esModule = true;
 var impoertcalllog = __webpack_require__(0);
-window.onload = function MainPageHTML() {
-    var lo = new mainPage();
-    lo.mainPageFunction();
-};
-var mainPage = (function () {
-    function mainPage() {
+// window.onload = function MainPageHTML() {
+//     let lo = new mainPage();
+//     lo.mainPageFunction();
+// }
+var myMainPage = (function () {
+    function myMainPage() {
     }
-    mainPage.prototype.mainPageFunction = function () {
+    myMainPage.prototype.mainPageFunction = function () {
         document.title = 'Main Page';
         // get the refference of the main Div
         var mainDiv = document.getElementById('MainDiv');
@@ -398,10 +405,11 @@ var mainPage = (function () {
         ParentDiv.appendChild(html1.createImage('divImg', '~/../images/sandcastle.png', 100, 100));
         ParentDiv.appendChild(html1.createMenu('divMenu', 'Dachboard,Users,Courses', 'this is Dachboard,this is Users,this is Courses'));
         mainDiv.appendChild(ParentDiv);
+        //alert('i am in main page');
     };
-    return mainPage;
+    return myMainPage;
 }());
-exports.mainPage = mainPage;
+exports.myMainPage = myMainPage;
 
 
 /***/ })

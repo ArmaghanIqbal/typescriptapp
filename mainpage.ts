@@ -1,11 +1,11 @@
 import * as impoertcalllog from './htmlcontrolsclass';
 
-window.onload = function MainPageHTML() {
+// window.onload = function MainPageHTML() {
 
-    let lo = new mainPage();
-    lo.mainPageFunction();
-}
-export class mainPage {
+//     let lo = new mainPage();
+//     lo.mainPageFunction();
+// }
+export class myMainPage {
     mainPageFunction() {
         document.title = 'Main Page';
 
@@ -35,5 +35,6 @@ export class mainPage {
         ParentDiv.appendChild(html1.createImage('divImg', '~/../images/sandcastle.png', 100, 100));
         ParentDiv.appendChild(html1.createMenu('divMenu', 'Dachboard,Users,Courses', 'this is Dachboard,this is Users,this is Courses'));
         mainDiv.appendChild(ParentDiv);
+        //alert('i am in main page');
     }
 }

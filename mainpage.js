@@ -1,14 +1,14 @@
 "use strict";
 exports.__esModule = true;
 var impoertcalllog = require("./htmlcontrolsclass");
-window.onload = function MainPageHTML() {
-    var lo = new mainPage();
-    lo.mainPageFunction();
-};
-var mainPage = (function () {
-    function mainPage() {
+// window.onload = function MainPageHTML() {
+//     let lo = new mainPage();
+//     lo.mainPageFunction();
+// }
+var myMainPage = (function () {
+    function myMainPage() {
     }
-    mainPage.prototype.mainPageFunction = function () {
+    myMainPage.prototype.mainPageFunction = function () {
         document.title = 'Main Page';
         // get the refference of the main Div
         var mainDiv = document.getElementById('MainDiv');
@@ -31,7 +31,8 @@ var mainPage = (function () {
         ParentDiv.appendChild(html1.createImage('divImg', '~/../images/sandcastle.png', 100, 100));
         ParentDiv.appendChild(html1.createMenu('divMenu', 'Dachboard,Users,Courses', 'this is Dachboard,this is Users,this is Courses'));
         mainDiv.appendChild(ParentDiv);
+        //alert('i am in main page');
     };
-    return mainPage;
+    return myMainPage;
 }());
-exports.mainPage = mainPage;
+exports.myMainPage = myMainPage;
