@@ -98,7 +98,6 @@ var creatediv = (function () {
     creatediv.prototype.divhtml = function (divid) {
         var div = document.createElement('div');
         div.setAttribute('id', divid);
-        div.setAttribute('align', 'center');
         return div;
     };
     return creatediv;
@@ -126,9 +125,7 @@ var htmlElementCreation = (function (_super) {
         for (var i = 0; i < str_array.length; i++) {
             var li = document.createElement('li');
             str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
-            alert(str_array[i]);
             hyperFunction[i] = hyperFunction[i].replace(/^\s*/, "").replace(/\s*$/, "");
-            alert(hyperFunction[i]);
             var hyperlink = document.createElement('a');
             var linkText = document.createTextNode(str_array[i]);
             hyperlink.appendChild(linkText);
@@ -228,8 +225,12 @@ var Login = (function () {
         var ParentDiv = document.createElement('div');
         ParentDiv.setAttribute('id', 'ParentDiv');
         ParentDiv.setAttribute('align', 'center');
+        var x = document.createElement("STYLE");
+        var t = document.createTextNode('#ParentDiv {position: absolute;    border: 1px solid black;        width: 500px;            height: 450px;           z-index: 15;            top: 30%;            left: 50%;            margin: -100px 0 0 -250px;            background: lightgrey; } input[type="text"], input[type="password"] {            padding: 0;       width:400px;     height: 30px;            position: relative;            left: 0;            outline: none;            border: 1px solid #cdcdcd;            border-color: rgba(0,0,0,.15);            background-color: white;            font-size: 16px; } span{ margin-left: -8.3cm; } div{margin-top:8px} img{margin-top:-60%; position:relative}');
+        x.appendChild(t);
+        document.head.appendChild(x);
         var html1 = new impoertcalllog.htmlElementCreation();
-        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/smily.jpg', 50, 50));
+        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/smily.jpg', 100, 100));
         ParentDiv.appendChild(html1.createLabels('div1', 'UserName'));
         ParentDiv.appendChild(html1.createtextboxes('div2', 'txtUsername', 'Text', "onlyAlphabets", true));
         ParentDiv.appendChild(html1.createLabels('div3', 'Password'));
@@ -293,7 +294,7 @@ var register = (function () {
         ParentDiv.appendChild(html1.createtextboxes('div8', 'txtpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
-        //ParentDiv.appendChild(html1.createbutton('div11', 'btnregister','Register'));
+        ParentDiv.appendChild(html1.createbutton('div11', 'btnregister', 'Register', RegisterSave));
         ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#', gotoLogin));
         mainDiv.appendChild(ParentDiv);
     };
@@ -303,6 +304,9 @@ exports.register = register;
 function gotoLogin() {
     var lo = new login.Login;
     lo.LoginPageFunction();
+}
+function RegisterSave() {
+    alert('this is registration save!!!');
 }
 
 
@@ -328,13 +332,14 @@ var forgot = (function () {
         ParentDiv.setAttribute('id', 'ParentDiv');
         ParentDiv.setAttribute('align', 'center');
         var html1 = new impoertcallreg.htmlElementCreation();
+        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/smily.jpg', 100, 100));
         ParentDiv.appendChild(html1.createLabels('div1', 'Email'));
         ParentDiv.appendChild(html1.createtextboxes('div2', 'txtemail', 'Text', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createLabels('div3', 'New Password'));
         ParentDiv.appendChild(html1.createtextboxes('div4', 'txtnewpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createLabels('div5', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
-        // ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword','Reset Password'));
+        ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword', 'Reset Password', resetPassword));
         ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin', 'or Sign In', '#', gotoLogin));
         ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup', 'or Sign Up', '#', goToRegistration));
         mainDiv.appendChild(ParentDiv);
@@ -349,6 +354,9 @@ function gotoLogin() {
 function goToRegistration() {
     var ll = new reg.register;
     ll.registerationhtmlpage();
+}
+function resetPassword() {
+    alert('reset button hittttt!!');
 }
 
 
@@ -375,11 +383,20 @@ var mainPage = (function () {
         if (element != null) {
             element.remove();
         }
+        var hs = document.getElementsByTagName('style');
+        for (var i = 0, max = hs.length; i < max; i++) {
+            hs[i].parentNode.removeChild(hs[i]);
+        }
         var ParentDiv = document.createElement('div');
         ParentDiv.setAttribute('id', 'ParentDiv');
         ParentDiv.setAttribute('align', 'center');
+        var x = document.createElement("STYLE");
+        var t = document.createTextNode('ul {list-style-type: none;position: fixed; margin: 0;  padding: 0;  overflow: hidden; background-color: #333; } li {float: left; } li a {display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none; } li a:hover { background-color: #111; }');
+        x.appendChild(t);
+        document.head.appendChild(x);
         var html1 = new impoertcalllog.htmlElementCreation();
-        ParentDiv.appendChild(html1.createMenu('divMenu', 'Home,About', 'homefun,aboutfunc'));
+        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/sandcastle.png', 100, 100));
+        ParentDiv.appendChild(html1.createMenu('divMenu', 'Dachboard,Users,Courses', 'this is Dachboard,this is Users,this is Courses'));
         mainDiv.appendChild(ParentDiv);
     };
     return mainPage;

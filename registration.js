@@ -28,7 +28,7 @@ var register = (function () {
         ParentDiv.appendChild(html1.createtextboxes('div8', 'txtpassword', 'Password', "onlyAlphabetsAndNumbers", true));
         ParentDiv.appendChild(html1.createLabels('div9', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div10', 'txtconfirmpassword', 'Password', "onlyAlphabetsAndNumbers", true));
-        //ParentDiv.appendChild(html1.createbutton('div11', 'btnregister','Register'));
+        ParentDiv.appendChild(html1.createbutton('div11', 'btnregister', 'Register', RegisterSave));
         ParentDiv.appendChild(html1.createhyperlink('div12', 'hypersignin', 'or Sign In', '#', gotoLogin));
         mainDiv.appendChild(ParentDiv);
     };
@@ -38,4 +38,7 @@ exports.register = register;
 function gotoLogin() {
     var lo = new login.Login;
     lo.LoginPageFunction();
+}
+function RegisterSave() {
+    alert('this is registration save!!!');
 }

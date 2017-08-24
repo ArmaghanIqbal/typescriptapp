@@ -18,6 +18,7 @@ export class forgot {
 
         var html1 = new impoertcallreg.htmlElementCreation();
 
+        ParentDiv.appendChild(html1.createImage('divImg', '~/../images/smily.jpg',100,100));
         ParentDiv.appendChild(html1.createLabels('div1', 'Email'));
         ParentDiv.appendChild(html1.createtextboxes('div2', 'txtemail','Text',"onlyAlphabetsAndNumbers",true));
 
@@ -27,7 +28,7 @@ export class forgot {
         ParentDiv.appendChild(html1.createLabels('div5', 'Confirm Password'));
         ParentDiv.appendChild(html1.createtextboxes('div6', 'txtconfirmpassword','Password',"onlyAlphabetsAndNumbers",true));
         
-       // ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword','Reset Password'));
+        ParentDiv.appendChild(html1.createbutton('div7', 'btnresetpassword','Reset Password',resetPassword));
 
         ParentDiv.appendChild(html1.createhyperlink('div8', 'hypersignin','or Sign In','#',gotoLogin));
         ParentDiv.appendChild(html1.createhyperlink('div9', 'hypersignup','or Sign Up','#',goToRegistration));
@@ -46,4 +47,9 @@ function goToRegistration()
 {
   var ll=new reg.register;
   ll.registerationhtmlpage();
+}
+
+function resetPassword()
+{
+  alert('reset button hittttt!!');
 }

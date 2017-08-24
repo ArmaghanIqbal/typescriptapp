@@ -28,7 +28,6 @@ var creatediv = (function () {
     creatediv.prototype.divhtml = function (divid) {
         var div = document.createElement('div');
         div.setAttribute('id', divid);
-        div.setAttribute('align', 'center');
         return div;
     };
     return creatediv;
@@ -56,9 +55,7 @@ var htmlElementCreation = (function (_super) {
         for (var i = 0; i < str_array.length; i++) {
             var li = document.createElement('li');
             str_array[i] = str_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
-            alert(str_array[i]);
             hyperFunction[i] = hyperFunction[i].replace(/^\s*/, "").replace(/\s*$/, "");
-            alert(hyperFunction[i]);
             var hyperlink = document.createElement('a');
             var linkText = document.createTextNode(str_array[i]);
             hyperlink.appendChild(linkText);
